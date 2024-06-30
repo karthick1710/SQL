@@ -23,3 +23,72 @@ SQL> desc emp
  DOB                                                DATE
  SALARY                                             NUMBER
  DEIGNATION                                         VARCHAR2(20)
+SQL> select *from emp;
+
+     EMPNO
+----------
+EMPNAME
+--------------------------------------------------------------------------------
+DOB           SALARY DEIGNATION
+--------- ---------- --------------------
+       100
+John
+21-APR-96      50000 Manager
+
+       101
+Greg
+20-JUL-94       2500 Clerk
+
+     EMPNO
+----------
+EMPNAME
+--------------------------------------------------------------------------------
+DOB           SALARY DEIGNATION
+--------- ---------- --------------------
+
+       102
+Dan
+27-MAY-99      30000 Asst.Manager
+
+
+SQL> select empname,salary from emp;
+
+EMPNAME
+--------------------------------------------------------------------------------
+    SALARY
+----------
+John
+     50000
+
+Greg
+      2500
+
+Dan
+     30000
+
+
+SQL> update emp set salary=salary+1000;
+
+3 rows updated.
+
+SQL> delete from emp where empno=100;
+
+1 row deleted.
+
+SQL> alter table emp add department VARCHAR(50);
+
+Table altered.
+
+SQL> desc emp;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMPNO                                              NUMBER
+ EMPNAME                                            VARCHAR2(255)
+ DOB                                                DATE
+ SALARY                                             NUMBER
+ DEIGNATION                                         VARCHAR2(20)
+ DEPARTMENT                                         VARCHAR2(50)
+
+SQL> alter table emp modify department VARCHAR(100);
+
+Table altered.
