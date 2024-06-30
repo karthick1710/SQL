@@ -8,3 +8,10 @@ Table created.
 SQL> insert into emp values(100,'John','21-Apr-1996',50000,'Manager');
 
 1 row created.
+SQL> insert into emp values(101,'Greg','20-July-1994',2500,'Clerk');
+
+1 row created.
+
+SQL> insert into emp values(102,'Dan','27-May-1999',30000,'Asst.Manager');
+
+1 row created.
