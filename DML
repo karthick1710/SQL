@@ -85,3 +85,114 @@ SQL> update exam set total=(mark1
 SQL> UPDATE exam SET total=(mark1+mark2+mark3+mark4+mark5);
 
 3 rows updated.
+SQL> select *from exam;
+
+    EXAMID  STUDENTID DEPAR      MARK1      MARK2      MARK3      MARK4
+---------- ---------- ----- ---------- ---------- ---------- ----------
+     MARK5      TOTAL    AVERAGE G
+---------- ---------- ---------- -
+      2222        101 IT            98         87         83         99
+        87        454
+
+      3333        104 IT            99         82         84         89
+       100        454
+
+      3333        104 IT            99         82         84         89
+       100        454
+
+
+SQL> UPDATE exam SET average=total/5;
+
+3 rows updated.
+
+SQL> select *from exam;
+
+    EXAMID  STUDENTID DEPAR      MARK1      MARK2      MARK3      MARK4
+---------- ---------- ----- ---------- ---------- ---------- ----------
+     MARK5      TOTAL    AVERAGE G
+---------- ---------- ---------- -
+      2222        101 IT            98         87         83         99
+        87        454       90.8
+
+      3333        104 IT            99         82         84         89
+       100        454       90.8
+
+      3333        104 IT            99         82         84         89
+       100        454       90.8
+SQL> update exam set grade= 'S' where average>95;
+
+0 rows updated.
+SQL> UPDATE exam SET grade='A' WHERE average<=95 AND average>90;
+
+3 rows updated.
+
+SQL> UPDATE exam SET grade='B' WHERE average<=90 AND average>85;
+
+0 rows updated.
+
+SQL> UPDATE exam SET grade='C' WHERE average<=85 AND average>80;
+
+0 rows updated.
+
+SQL> UPDATE exam SET grade='D' WHERE average<=80 AND average>75;
+
+0 rows updated.
+
+SQL> UPDATE exam SET grade='F' WHERE average<75;
+
+0 rows updated.
+
+SQL> SELECT * FROM exam;
+
+    EXAMID  STUDENTID DEPAR      MARK1      MARK2      MARK3      MARK4
+---------- ---------- ----- ---------- ---------- ---------- ----------
+     MARK5      TOTAL    AVERAGE G
+---------- ---------- ---------- -
+      2222        101 IT            98         87         83         99
+        87        454       90.8 A
+
+      3333        104 IT            99         82         84         89
+       100        454       90.8 A
+
+      3333        104 IT            99         82         84         89
+       100        454       90.8 A
+
+
+SQL> delete from exam where examid=2222;
+
+1 row deleted.
+
+SQL> SELECT * FROM exam;
+
+    EXAMID  STUDENTID DEPAR      MARK1      MARK2      MARK3      MARK4
+---------- ---------- ----- ---------- ---------- ---------- ----------
+     MARK5      TOTAL    AVERAGE G
+---------- ---------- ---------- -
+      3333        104 IT            99         82         84         89
+       100        454       90.8 A
+
+      3333        104 IT            99         82         84         89
+       100        454       90.8 A
+
+
+SQL> INSERT INTO exam(examid, studentid, department, mark1, mark2, mark3, mark4,mark5) VALUES(4444,108,'IT',92,85,83,91,87);
+
+1 row created.
+
+SQL> SELECT * FROM exam;
+
+    EXAMID  STUDENTID DEPAR      MARK1      MARK2      MARK3      MARK4
+---------- ---------- ----- ---------- ---------- ---------- ----------
+     MARK5      TOTAL    AVERAGE G
+---------- ---------- ---------- -
+      3333        104 IT            99         82         84         89
+       100        454       90.8 A
+
+      3333        104 IT            99         82         84         89
+       100        454       90.8 A
+
+      4444        108 IT            92         85         83         91
+        87
+SQL> delete from exam where examid=4444;
+
+1 row deleted.
