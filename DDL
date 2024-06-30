@@ -1,0 +1,88 @@
+SQL> CREATE TABLE student  (   studentID NUMBER PRIMARY KEY,   sname VARCHAR2(30) NOT NULL,   department CHAR(5),   sem NUMBER,   dob DATE,   email_id VARCHAR2(20) UNIQUE,    college VARCHAR2(20) DEFAULT 'MEC'  );
+
+Table created.
+
+SQL> desc student;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ STUDENTID                                 NOT NULL NUMBER
+ SNAME                                     NOT NULL VARCHAR2(30)
+ DEPARTMENT                                         CHAR(5)
+ SEM                                                NUMBER
+ DOB                                                DATE
+ EMAIL_ID                                           VARCHAR2(20)
+ COLLEGE                                            VARCHAR2(20)
+
+SQL> CREATE TABLE exam  (   examID NUMBER ,    studentID NUMBER REFERENCES student(studentID),   department CHAR(5) NOT NULL,    mark1 NUMBER CHECK (mark1<=100 and mark1>=0),   mark2 NUMBER CHECK (mark2<=100 and mark2>=0),   mark3 NUMBER CHECK (mark3<=100 and mark3>=0),   mark4 NUMBER CHECK (mark4<=100 and mark4>=0),   mark5 NUMBER CHECK (mark5<=100 and mark5>=0),   total NUMBER,    average NUMBER,   grade CHAR(1)  );
+
+Table created.
+
+SQL> desc exam;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EXAMID                                             NUMBER
+ STUDENTID                                          NUMBER
+ DEPARTMENT                                NOT NULL CHAR(5)
+ MARK1                                              NUMBER
+ MARK2                                              NUMBER
+ MARK3                                              NUMBER
+ MARK4                                              NUMBER
+ MARK5                                              NUMBER
+ TOTAL                                              NUMBER
+ AVERAGE                                            NUMBER
+ GRADE                                              CHAR(1)
+
+SQL> alter table student add address varchar2(100);
+
+Table altered.
+
+SQL> desc student;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ STUDENTID                                 NOT NULL NUMBER
+ SNAME                                     NOT NULL VARCHAR2(30)
+ DEPARTMENT                                         CHAR(5)
+ SEM                                                NUMBER
+ DOB                                                DATE
+ EMAIL_ID                                           VARCHAR2(20)
+ COLLEGE                                            VARCHAR2(20)
+ ADDRESS                                            VARCHAR2(100)
+
+SQL> alter table student modify address varchar2(150);
+
+Table altered.
+
+SQL> desc student;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ STUDENTID                                 NOT NULL NUMBER
+ SNAME                                     NOT NULL VARCHAR2(30)
+ DEPARTMENT                                         CHAR(5)
+ SEM                                                NUMBER
+ DOB                                                DATE
+ EMAIL_ID                                           VARCHAR2(20)
+ COLLEGE                                            VARCHAR2(20)
+ ADDRESS                                            VARCHAR2(150)
+
+SQL> alter table student drop(address);
+
+Table altered.
+
+SQL> ALTER TABLE student RENAME TO student1;
+
+Table altered.
+
+SQL> desc student1;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ STUDENTID                                 NOT NULL NUMBER
+ SNAME                                     NOT NULL VARCHAR2(30)
+ DEPARTMENT                                         CHAR(5)
+ SEM                                                NUMBER
+ DOB                                                DATE
+ EMAIL_ID                                           VARCHAR2(20)
+ COLLEGE                                            VARCHAR2(20)
+
+SQL> DROP TABLE exam;
+
+Table dropped.
