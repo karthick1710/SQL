@@ -1,0 +1,19 @@
+SQL> INSERT INTO student VALUES(101,'RUPESH','IT',5,'04-Apr-1996','rupesh@gmail.com','MEC');
+
+1 row created.
+
+SQL> INSERT INTO student VALUES (102,'BALA','CSE',7,'10-May-1995','bala@gmail.com','IIT');
+
+1 row created.
+
+SQL> INSERT INTO student VALUES (104,'HEMESH','IT',5,'7-Feb-1996','hemesh@gmail.com','IIT');
+
+1 row created.
+
+SQL> INSERT INTO student VALUES (106,'SAIVAISHNAVI','CSE',5,'06-Sep-1996', 'vaishu@gmail.com','IFET');
+
+1 row created.
+
+SQL> INSERT INTO student(studentid,sname,department,sem,dob,email_id) VALUES (108,'RISHA','IT',5,'04-Jan-1996','risha@gmail.com');
+
+1 row created.
