@@ -15,3 +15,11 @@ SQL> insert into emp values(101,'Greg','20-July-1994',2500,'Clerk');
 SQL> insert into emp values(102,'Dan','27-May-1999',30000,'Asst.Manager');
 
 1 row created.
+SQL> desc emp
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMPNO                                              NUMBER
+ EMPNAME                                            VARCHAR2(255)
+ DOB                                                DATE
+ SALARY                                             NUMBER
+ DEIGNATION                                         VARCHAR2(20)
