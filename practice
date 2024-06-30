@@ -92,3 +92,16 @@ SQL> desc emp;
 SQL> alter table emp modify department VARCHAR(100);
 
 Table altered.
+SQL> alter table emp rename to emp1;
+
+Table altered.
+
+SQL> desc emp1;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMPNO                                              NUMBER
+ EMPNAME                                            VARCHAR2(255)
+ DOB                                                DATE
+ SALARY                                             NUMBER
+ DEIGNATION                                         VARCHAR2(20)
+ DEPARTMENT                                         VARCHAR2(100)
