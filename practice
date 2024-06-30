@@ -1,0 +1,10 @@
+SQL> connect system
+Enter password:
+Connected.
+SQL> create table emp(empno NUMBER,empname VARCHAR(255),DOB DATE,salary NUMBER,deignation VARCHAR(20));
+
+Table created.
+
+SQL> insert into emp values(100,'John','21-Apr-1996',50000,'Manager');
+
+1 row created.
