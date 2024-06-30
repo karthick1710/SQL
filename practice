@@ -105,3 +105,10 @@ SQL> desc emp1;
  SALARY                                             NUMBER
  DEIGNATION                                         VARCHAR2(20)
  DEPARTMENT                                         VARCHAR2(100)
+SQL> drop table emp1;
+
+Table dropped.
+
+SQL> desc emp1;
+ERROR:
+ORA-04043: object emp1 does not exist
