@@ -1,0 +1,79 @@
+SQL> CREATE TABLE stud  (   studentID NUMBER PRIMARY KEY,   sname VARCHAR2(30) NOT NULL,   department CHAR(5),   sem NUMBER,   dob DATE,   email_id VARCHAR2(20) UNIQUE,    college VARCHAR2(20) DEFAULT 'MEC'  );
+
+Table created.
+
+SQL> desc stud;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ STUDENTID                                 NOT NULL NUMBER
+ SNAME                                     NOT NULL VARCHAR2(30)
+ DEPARTMENT                                         CHAR(5)
+ SEM                                                NUMBER
+ DOB                                                DATE
+ EMAIL_ID                                           VARCHAR2(20)
+ COLLEGE                                            VARCHAR2(20)
+
+SQL> select *from student;
+
+ STUDENTID SNAME                          DEPAR        SEM DOB
+---------- ------------------------------ ----- ---------- ---------
+EMAIL_ID             COLLEGE
+-------------------- --------------------
+       101 RUPESH                         IT             5 04-APR-96
+rupesh@gmail.com     MEC
+
+       102 BALA                           CSE            7 10-MAY-95
+bala@gmail.com       IIT
+
+       104 HEMESH                         IT             5 07-FEB-96
+hemesh@gmail.com     IIT
+
+
+ STUDENTID SNAME                          DEPAR        SEM DOB
+---------- ------------------------------ ----- ---------- ---------
+EMAIL_ID             COLLEGE
+-------------------- --------------------
+       106 SAIVAISHNAVI                   CSE            5 06-SEP-96
+vaishu@gmail.com     IFET
+
+       108 RISHA                          IT             5 04-JAN-96
+risha@gmail.com      MEC
+
+
+SQL> select sname,department,sem from student;
+
+SNAME                          DEPAR        SEM
+------------------------------ ----- ----------
+RUPESH                         IT             5
+BALA                           CSE            7
+HEMESH                         IT             5
+SAIVAISHNAVI                   CSE            5
+RISHA                          IT             5
+
+SQL> select sname "Student Name",department,sem from student;
+
+Student Name                   DEPAR        SEM
+------------------------------ ----- ----------
+RUPESH                         IT             5
+BALA                           CSE            7
+HEMESH                         IT             5
+SAIVAISHNAVI                   CSE            5
+RISHA                          IT             5
+
+SQL> select sname,department,sem+1"sem" from student;
+
+SNAME                          DEPAR        sem
+------------------------------ ----- ----------
+RUPESH                         IT             6
+BALA                           CSE            8
+HEMESH                         IT             6
+SAIVAISHNAVI                   CSE            6
+RISHA                          IT             6
+
+SQL> select distinct college from student;
+
+COLLEGE
+--------------------
+MEC
+IIT
+IFET
