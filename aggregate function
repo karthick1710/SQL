@@ -1,0 +1,48 @@
+SQL> select *from student;
+
+ STUDENTID SNAME                          DEPAR        SEM DOB
+---------- ------------------------------ ----- ---------- ---------
+EMAIL_ID             COLLEGE
+-------------------- --------------------
+       101 RUPESH                         IT             5 04-APR-96
+rupesh@gmail.com     MEC
+
+       102 BALA                           CSE            7 10-MAY-95
+bala@gmail.com       IIT
+
+       104 HEMESH                         IT             5 07-FEB-96
+hemesh@gmail.com     IIT
+
+
+ STUDENTID SNAME                          DEPAR        SEM DOB
+---------- ------------------------------ ----- ---------- ---------
+EMAIL_ID             COLLEGE
+-------------------- --------------------
+       106 SAIVAISHNAVI                   CSE            5 06-SEP-96
+vaishu@gmail.com     IFET
+
+       108 RISHA                          IT             5 04-JAN-96
+risha@gmail.com      MEC
+
+
+SQL> select department,sem,sname from student order by department;
+
+DEPAR        SEM SNAME
+----- ---------- ------------------------------
+CSE            5 SAIVAISHNAVI
+CSE            7 BALA
+IT             5 RISHA
+IT             5 RUPESH
+IT             5 HEMESH
+
+SQL> select department,sem,sname from student order by department desc,sem desc,sname desc;
+
+DEPAR        SEM SNAME
+----- ---------- ------------------------------
+IT             5 RUPESH
+IT             5 RISHA
+IT             5 HEMESH
+CSE            7 BALA
+CSE            5 SAIVAISHNAVI
+
+SQL> select department,sum(total) as sum_department from exam group by department;
