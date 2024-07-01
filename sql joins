@@ -1,0 +1,264 @@
+SQL> connect system
+Enter password:
+Connected.
+SQL> create table cseitstudent(studentID number primary key,sname varchar(30),department char(5),sem number);
+
+Table created.
+
+SQL> create table placement(PlacementID number primary key,StudentID number,department char(5),company varchar2(30),salary number);
+
+Table created.
+
+SQL>  INSERT INTO cseitstudent (studentID, sname, department, sem) VALUES(101,'reema', 'IT',5);
+
+1 row created.
+
+SQL>  INSERT INTO cseitstudent (studentID, sname, department, sem) VALUES(102,'reenu', 'IT',3);
+
+1 row created.
+
+SQL> INSERT INTO cseitstudent (studentID, sname, department, sem) VALUES(103,'sheela', 'CSE',3);
+
+1 row created.
+
+SQL> INSERT INTO cseitstudent (studentID, sname, department, sem) VALUES(104,'nirmal', 'IT',3);
+
+1 row created.
+
+SQL> INSERT INTO cseitstudent (studentID, sname, department, sem) VALUES(105,'eshwar', 'CSE',5);
+
+1 row created.
+
+SQL> INSERT INTO placement VALUES(1, 104, 'IT', 'infosys', 25000);
+
+1 row created.
+
+SQL> INSERT INTO placement VALUES(2, 105, 'CSE', 'Wipro', 22000);
+
+1 row created.
+
+SQL> INSERT INTO placement VALUES(3, 204, 'MECH', 'HYUNDAI', 30000);
+
+1 row created.
+
+SQL> INSERT INTO placement VALUES(4, 102, 'IT', 'infosys', 25000);
+
+1 row created.
+
+SQL> INSERT INTO placement VALUES(5, 103, 'CSE', 'infosys', 25000);
+
+1 row created.
+
+SQL> select *from cseitstudent;
+
+ STUDENTID SNAME                          DEPAR        SEM
+---------- ------------------------------ ----- ----------
+       101 reema                          IT             5
+       102 reenu                          IT             3
+       103 sheela                         CSE            3
+       104 nirmal                         IT             3
+       105 eshwar                         CSE            5
+
+SQL> select *from placement;
+
+PLACEMENTID  STUDENTID DEPAR COMPANY                            SALARY
+----------- ---------- ----- ------------------------------ ----------
+          1        104 IT    infosys                             25000
+          2        105 CSE   Wipro                               22000
+          3        204 MECH  HYUNDAI                             30000
+          4        102 IT    infosys                             25000
+          5        103 CSE   infosys                             25000
+
+SQL> select *from cseitstudent inner join placement on cseitstudent.studentID=placement.studentID;
+
+ STUDENTID SNAME                          DEPAR        SEM PLACEMENTID
+---------- ------------------------------ ----- ---------- -----------
+ STUDENTID DEPAR COMPANY                            SALARY
+---------- ----- ------------------------------ ----------
+       104 nirmal                         IT             3           1
+       104 IT    infosys                             25000
+
+       105 eshwar                         CSE            5           2
+       105 CSE   Wipro                               22000
+
+       102 reenu                          IT             3           4
+       102 IT    infosys                             25000
+
+
+ STUDENTID SNAME                          DEPAR        SEM PLACEMENTID
+---------- ------------------------------ ----- ---------- -----------
+ STUDENTID DEPAR COMPANY                            SALARY
+---------- ----- ------------------------------ ----------
+       103 sheela                         CSE            3           5
+       103 CSE   infosys                             25000
+
+
+SQL> select cseitstudent.studentID,cseitstudent.sname,placement.company,placement.salary from cseitstudent inner join placement on cseitstudent.studentID=placement.studentID;
+
+ STUDENTID SNAME                          COMPANY
+---------- ------------------------------ ------------------------------
+    SALARY
+----------
+       104 nirmal                         infosys
+     25000
+
+       105 eshwar                         Wipro
+     22000
+
+       102 reenu                          infosys
+     25000
+
+
+ STUDENTID SNAME                          COMPANY
+---------- ------------------------------ ------------------------------
+    SALARY
+----------
+       103 sheela                         infosys
+     25000
+
+
+SQL> SELECT *  FROM cseitstudent LEFT OUTER JOIN placement ON cseitstudent.studentID=placement.studentID;
+
+ STUDENTID SNAME                          DEPAR        SEM PLACEMENTID
+---------- ------------------------------ ----- ---------- -----------
+ STUDENTID DEPAR COMPANY                            SALARY
+---------- ----- ------------------------------ ----------
+       104 nirmal                         IT             3           1
+       104 IT    infosys                             25000
+
+       105 eshwar                         CSE            5           2
+       105 CSE   Wipro                               22000
+
+       102 reenu                          IT             3           4
+       102 IT    infosys                             25000
+
+
+ STUDENTID SNAME                          DEPAR        SEM PLACEMENTID
+---------- ------------------------------ ----- ---------- -----------
+ STUDENTID DEPAR COMPANY                            SALARY
+---------- ----- ------------------------------ ----------
+       103 sheela                         CSE            3           5
+       103 CSE   infosys                             25000
+
+       101 reema                          IT             5
+
+
+
+SQL> SELECT cseitstudent.sname,placement.placementID, placement.company  FROM cseitstudent LEFT OUTER JOIN placement  ON cseitstudent.studentID=placement.studentID;
+
+SNAME                          PLACEMENTID COMPANY
+------------------------------ ----------- ------------------------------
+nirmal                                   1 infosys
+eshwar                                   2 Wipro
+reenu                                    4 infosys
+sheela                                   5 infosys
+reema
+
+SQL> SELECT *  FROM cseitstudent RIGHT OUTER JOIN placement  ON cseitstudent.studentID=placement.studentID;
+
+ STUDENTID SNAME                          DEPAR        SEM PLACEMENTID
+---------- ------------------------------ ----- ---------- -----------
+ STUDENTID DEPAR COMPANY                            SALARY
+---------- ----- ------------------------------ ----------
+       102 reenu                          IT             3           4
+       102 IT    infosys                             25000
+
+       103 sheela                         CSE            3           5
+       103 CSE   infosys                             25000
+
+       104 nirmal                         IT             3           1
+       104 IT    infosys                             25000
+
+
+ STUDENTID SNAME                          DEPAR        SEM PLACEMENTID
+---------- ------------------------------ ----- ---------- -----------
+ STUDENTID DEPAR COMPANY                            SALARY
+---------- ----- ------------------------------ ----------
+       105 eshwar                         CSE            5           2
+       105 CSE   Wipro                               22000
+
+                                                                     3
+       204 MECH  HYUNDAI                             30000
+
+
+SQL> SELECT *  FROM cseitstudent RIGHT OUTER JOIN placement  ON cseitstudent.studentID=placement.studentID;
+
+ STUDENTID SNAME                          DEPAR        SEM PLACEMENTID
+---------- ------------------------------ ----- ---------- -----------
+ STUDENTID DEPAR COMPANY                            SALARY
+---------- ----- ------------------------------ ----------
+       102 reenu                          IT             3           4
+       102 IT    infosys                             25000
+
+       103 sheela                         CSE            3           5
+       103 CSE   infosys                             25000
+
+       104 nirmal                         IT             3           1
+       104 IT    infosys                             25000
+
+
+ STUDENTID SNAME                          DEPAR        SEM PLACEMENTID
+---------- ------------------------------ ----- ---------- -----------
+ STUDENTID DEPAR COMPANY                            SALARY
+---------- ----- ------------------------------ ----------
+       105 eshwar                         CSE            5           2
+       105 CSE   Wipro                               22000
+
+                                                                     3
+       204 MECH  HYUNDAI                             30000
+
+
+SQL> SELECT cseitstudent.sname,placement.placementID, placement.company  FROM cseitstudent  RIGHT OUTER JOIN placement  ON cseitstudent.studentID = placement.studentID;
+
+SNAME                          PLACEMENTID COMPANY
+------------------------------ ----------- ------------------------------
+reenu                                    4 infosys
+sheela                                   5 infosys
+nirmal                                   1 infosys
+eshwar                                   2 Wipro
+                                         3 HYUNDAI
+
+SQL> SELECT *  FROM cseitstudent  FULL OUTER JOIN placement  ON cseitstudent.studentID=placement.studentID;
+
+ STUDENTID SNAME                          DEPAR        SEM PLACEMENTID
+---------- ------------------------------ ----- ---------- -----------
+ STUDENTID DEPAR COMPANY                            SALARY
+---------- ----- ------------------------------ ----------
+       104 nirmal                         IT             3           1
+       104 IT    infosys                             25000
+
+       105 eshwar                         CSE            5           2
+       105 CSE   Wipro                               22000
+
+       102 reenu                          IT             3           4
+       102 IT    infosys                             25000
+
+
+ STUDENTID SNAME                          DEPAR        SEM PLACEMENTID
+---------- ------------------------------ ----- ---------- -----------
+ STUDENTID DEPAR COMPANY                            SALARY
+---------- ----- ------------------------------ ----------
+       103 sheela                         CSE            3           5
+       103 CSE   infosys                             25000
+
+       101 reema                          IT             5
+
+
+                                                                     3
+       204 MECH  HYUNDAI                             30000
+
+
+6 rows selected.
+
+SQL> SELECT cseitstudent.sname,placement.placementID, placement.company  FROM cseitstudent  FULL OUTER JOIN placement  ON cseitstudent.studentID=placement.studentID;
+
+SNAME                          PLACEMENTID COMPANY
+------------------------------ ----------- ------------------------------
+nirmal                                   1 infosys
+eshwar                                   2 Wipro
+reenu                                    4 infosys
+sheela                                   5 infosys
+reema
+                                         3 HYUNDAI
+
+6 rows selected.
