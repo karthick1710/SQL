@@ -1,0 +1,103 @@
+SQL> connect system
+Enter password:
+Connected.
+SQL> select *from student;
+
+ STUDENTID SNAME                          DEPAR        SEM DOB
+---------- ------------------------------ ----- ---------- ---------
+EMAIL_ID             COLLEGE
+-------------------- --------------------
+       101 RUPESH                         IT             5 04-APR-96
+rupesh@gmail.com     MEC
+
+       102 BALA                           CSE            7 10-MAY-95
+bala@gmail.com       IIT
+
+       104 HEMESH                         IT             5 07-FEB-96
+hemesh@gmail.com     IIT
+
+
+ STUDENTID SNAME                          DEPAR        SEM DOB
+---------- ------------------------------ ----- ---------- ---------
+EMAIL_ID             COLLEGE
+-------------------- --------------------
+       106 SAIVAISHNAVI                   CSE            5 06-SEP-96
+vaishu@gmail.com     IFET
+
+       108 RISHA                          IT             5 04-JAN-96
+risha@gmail.com      MEC
+
+
+SQL> select studentid,sname,department from student where sem between 5 and 6;
+
+ STUDENTID SNAME                          DEPAR
+---------- ------------------------------ -----
+       101 RUPESH                         IT
+       104 HEMESH                         IT
+       106 SAIVAISHNAVI                   CSE
+       108 RISHA                          IT
+
+SQL> select studentid,sname,department from student where department in('CSE','IT');
+
+ STUDENTID SNAME                          DEPAR
+---------- ------------------------------ -----
+       101 RUPESH                         IT
+       102 BALA                           CSE
+       104 HEMESH                         IT
+       106 SAIVAISHNAVI                   CSE
+       108 RISHA                          IT
+
+SQL> select studentid,sname,department from student where department not in'CSE';
+
+ STUDENTID SNAME                          DEPAR
+---------- ------------------------------ -----
+       101 RUPESH                         IT
+       104 HEMESH                         IT
+       108 RISHA                          IT
+
+SQL> select studentid,sname from student where sname like 'R%';
+
+ STUDENTID SNAME
+---------- ------------------------------
+       101 RUPESH
+       108 RISHA
+
+SQL> select studentid,sname from student where sname like '%h';
+
+no rows selected
+
+SQL> select studentid,sname from student where sname like '%H';
+
+ STUDENTID SNAME
+---------- ------------------------------
+       101 RUPESH
+       104 HEMESH
+
+SQL> select studentid,sname from student where sname like '%SH%';
+
+ STUDENTID SNAME
+---------- ------------------------------
+       101 RUPESH
+       104 HEMESH
+       106 SAIVAISHNAVI
+       108 RISHA
+
+SQL> select studentid,sname from student where studentid>105;
+
+ STUDENTID SNAME
+---------- ------------------------------
+       106 SAIVAISHNAVI
+       108 RISHA
+
+SQL> select studentid,sname from student where studentid>105 and depaartment='CSE';
+select studentid,sname from student where studentid>105 and depaartment='CSE'
+                                                            *
+ERROR at line 1:
+ORA-00904: "DEPAARTMENT": invalid identifier
+
+
+SQL> select studentid,sname from student where studentid>105 and department='CSE';
+
+ STUDENTID SNAME
+---------- ------------------------------
+       106 SAIVAISHNAVI
