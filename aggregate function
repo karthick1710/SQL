@@ -46,3 +46,18 @@ CSE            7 BALA
 CSE            5 SAIVAISHNAVI
 
 SQL> select department,sum(total) as sum_department from exam group by department;
+2. GROUP BY 
+// To displays the total value group by department  
+SELECT department, SUM(total) AS SUM_DEPARTMENT FROM exam GROUP BY department;  
+ DEPARTMENT SUM_DEPARTMENT  CSE    430 IT    1346  
+3. AGGREGATE FUNCTIONS 
+// 1. COUNT - displays total number of rows    SELECT COUNT(examid) AS STUDENTS_REGISTERED FROM exam;      STUDENTS_REGISTERED     4     // 2. MAX - displays the maximum value  
+SELECT MAX(average) AS RANK_1 FROM exam;       RANK_1  90.8  
+// 3. MIN - displays the minimum value  
+SELECT MIN(average) AS LAST_RANK FROM exam;  
+ LAST_RANK  86        // 4. SUM - displays the total value  
+SELECT department, SUM(total) AS SUM_DEPARTMENT FROM exam GROUP BY department;  
+ DEPARTMENT SUM_DEPARTMENT  CSE    430 IT    1346 
+// 5. AVG - displays the average value  
+SELECT department, AVG(total) AS AVERAGE FROM exam GROUP BY department;  
+DEPARTMENT AVERAGE  IT  448.66667  CSE  430   
