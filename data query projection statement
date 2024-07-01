@@ -77,3 +77,41 @@ COLLEGE
 MEC
 IIT
 IFET
+SQL> SELECT sname||studentid FROM student;
+
+SNAME||STUDENTID
+----------------------------------------------------------------------
+RUPESH101
+BALA102
+HEMESH104
+SAIVAISHNAVI106
+RISHA108
+
+SQL> SELECT * FROM student WHERE college='MEC';
+
+ STUDENTID SNAME                          DEPAR        SEM DOB
+---------- ------------------------------ ----- ---------- ---------
+EMAIL_ID             COLLEGE
+-------------------- --------------------
+       101 RUPESH                         IT             5 04-APR-96
+rupesh@gmail.com     MEC
+
+       108 RISHA                          IT             5 04-JAN-96
+risha@gmail.com      MEC
+
+
+SQL> SELECT studentid, sname FROM student WHERE college='IIT';
+
+ STUDENTID SNAME
+---------- ------------------------------
+       102 BALA
+       104 HEMESH
+
+SQL> SELECT  sname, department FROM student WHERE sem=5;
+
+SNAME                          DEPAR
+------------------------------ -----
+RUPESH                         IT
+HEMESH                         IT
+SAIVAISHNAVI                   CSE
+RISHA                          IT
